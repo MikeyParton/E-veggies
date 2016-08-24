@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EStore</title>
+    <title>E-Veggies | <%= controller.action_name %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,25 @@
   </head>
 
   <body>
-    <%= yield %>
+	  <div class="wrapper">
+	  	<div class="header">
+		  	<h1>E-Veggies</h1>
+		  	<p>Your Online Grocery Store</p>
+	  	</div>
+
+	  	<p style="color: green"><%=flash[:notice] %> </p>
+
+	  	<div class="sidebar">
+	  		(sidebar)
+	  	</div>
+
+	  	<div class="main">
+	  		<%= yield %>
+	  	</div>
+
+	  	<div class="footer">
+	  		E-Veggies - A Rails Project by Mike Parton
+	  	</div>
+	  </div>
   </body>
 </html>
