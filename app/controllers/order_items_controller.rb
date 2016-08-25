@@ -9,7 +9,10 @@ class OrderItemsController < ApplicationController
   # POST /order_items
   # POST /order_items.json
   def create
-    @order_item = OrderItem.new(product_id: params[:product_id], order_id: @order.id, quantity:1)
+    
+
+    @order_item = OrderItem.find_or_initialize_by(product_id: params[:product_id], order_id: @order.id)
+    @order_item.quantity += 1 
 
     respond_to do |format|
       if @order_item.save
@@ -25,25 +28,31 @@ class OrderItemsController < ApplicationController
   # PATCH/PUT /order_items/1
   # PATCH/PUT /order_items/1.json
   def update
-    respond_to do |format|
-      if @order_item.update(order_item_params)
-        format.html { redirect_to @order_item, notice: 'Order item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
-      end
+    if params[:order_item][:quantity].to_i  == 0
+      @order_item.destroy
+      redirect_to @order_item.order
+      flash[:notice] = 'Order item was successfully removed.'
+    elsif
+        if @order_item.update(order_item_params)
+          redirect_to @order_item.order
+          flash[:notice] = 'Order item was successfully updated.'
+        else
+          render "edit"
+          flash[:notice] = 'Error with update.'
+        end
     end
   end
 
   # DELETE /order_items/1
   # DELETE /order_items/1.json
   def destroy
+    @order = @order_item.order
     @order_item.destroy
     respond_to do |format|
-      format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
+      format.html { redirect_to @order, notice: "Item successfully removed from cart" }
       format.json { head :no_content }
     end
+    
   end
 
   private

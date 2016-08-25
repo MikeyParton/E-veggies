@@ -10,17 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :product_id %>
-    <%= f.number_field :product_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :order_id %>
-    <%= f.number_field :order_id %>
-  </div>
-
+  <p><%= order_item.product.title %></p>
   <div class="field">
     <%= f.label :quantity %>
     <%= f.number_field :quantity %>
