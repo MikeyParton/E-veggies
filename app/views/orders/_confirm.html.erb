@@ -1,0 +1,85 @@
+<div class="container">
+<%= form_for @order, remote: true do |f| %>
+<div class="modal-content order-summary">
+	<div class="modal-header">
+		<h1>Your Order</h1>
+	</div>
+
+	<div class="modal-body order-detail">
+		<div class="container">
+		
+		<div class="col-md-6">
+			<table class="order-header">
+				<ul class="errors"></ul> 
+				<h4>Your Details</h4>
+				<tr>
+					<th>Customer: </th>
+					<td><%= @order.user.name %></td>
+				</tr>
+				<tr>
+					<th>Order Status: </th>
+					<td><%= @order.status %></td>
+				</tr>
+			</table>
+			<hr>
+			<h4>Shipping</h4>
+			<table>
+				<tr>
+					<th>Ship to: </th>
+					<td>
+						<%= f.select :address_id, current_user.addresses.collect{ |a| [a.to_s, a.id] }, {}, { class:"form-control" } %>
+					</td>
+					<td><%= link_to "New Address", new_address_path, remote: true %></td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div class="col-md-6">		
+			<h4>Items</h4>
+			<table class="item-summary">
+				<tr>
+					<th></th>
+					<th></th>
+					<th>Quantity</th>
+					<th>Unit Price</th>
+					<th>Subtotal</th>
+				</tr>
+				<% row = 0 %>
+				<% @order.order_items.each do |item| %>	
+				<tr class="item-row">
+					<td><%= row = row + 1 %></td>
+					<td><%= image_tag "products/#{item.product.image_url}", class: "mini-pic" %><%= item.product.title %></td>
+					<td><%= item.quantity %></td>
+					<td><%= print_price item.product.price %></td>
+					<td><%= print_price item.subtotal %></td>
+				</tr>
+				<% end %>
+
+				<!-- I was going to put in an extra line item for shipping
+
+					<tr class="item-row">
+						<td><%=row = row + 1 %></td>
+						<td>Shipping</td>
+						<td colspan="2"></td>
+						<td>$20.00</td>
+					</tr>
+				-->
+
+				<tr class="total-row">		
+					<td colspan="3"></td>
+					<td>Total:</td>
+					<td><%= print_price @order.total %></td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<%= link_to 'Back', root_path, class: "btn btn-outline-success" %>
+		<%= f.submit "Send Order", class: "btn btn-outline-success" %>
+	</div>
+</div>
+<% end %>
+</div>

@@ -1,0 +1,17 @@
+var order = $("#line-item-<%= @order_item.id %>");
+var product = $("#product-<%= @order_item.product.id %>");
+
+// Update the product partial
+product.replaceWith("<%= j render partial: 'products/product', locals: { product: @order_item.product } %>");
+
+//Update the total price
+$(".total").html("<%= j render 'products/total' %>");
+$(".total").toggleClass('negative-update-item').bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e){
+	$(".total").removeClass('negative-update-item');
+});
+
+// Fade the item out of the cart and remove the html
+$(order).slideUp(500);
+$(order).toggleClass('negative-update-item').bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e){
+	$(order).remove();
+});

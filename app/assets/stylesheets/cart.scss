@@ -1,0 +1,164 @@
+/* CART */
+
+#cart {
+    margin: 0 20px 20px 0;
+    width:300px;
+    position: fixed;
+    bottom: 0;
+    right: 0;    
+    z-index: 2;
+}
+
+.trigger {
+    display: block;
+    margin: 5px 8px;
+    width: 40px;
+    height: 40px;
+    float: right;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 20px;
+    border: solid white 1px;
+    font-size: 18px;
+    padding: 5px 0 0 0;
+    text-align: center;
+    cursor: pointer; 
+    cursor: hand;
+}
+
+.order {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #5cb85c;
+    padding-bottom: 10px;
+    
+    h2 {
+        margin: 0px;
+        padding-top: 20px
+    }
+    
+    .head {
+        height: 63px;
+        text-align: center;
+        color: white;    
+    }
+    
+    .contents {
+        background-color: white;
+        margin: 0 10px 0 10px;
+    }
+    
+    ul {
+        margin: 0px
+    }
+}
+
+.foot {
+    background-color: #5cb85c;
+    height: 50px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    
+    a {
+        margin: 8px 0 0 8px;
+        width: calc(100% - 50px - 16px)
+    }
+}
+
+.open {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.line-item {
+    padding: 5px;
+}
+
+.to-end{
+        float: right;
+    }
+
+.total {
+    border-top: solid grey 1px;
+    text-align: right;
+    padding: 10px;
+    
+    h3 {
+        margin:0px;
+    }  
+}
+
+
+/* Animation classes */
+
+.add-item{
+    overflow: hidden;
+    display: none;
+    height: 30px;
+    animation: add-item 1s;
+    a {
+        animation: add-item 1s;
+    }
+}
+
+.update-item{
+    animation: add-item 1s;
+    a {
+        animation: add-item 1s;
+    }
+}
+
+.negative-update-item{
+    animation: negative-update-item 1s;
+    a {
+        animation: negative-update-item 1s;
+    }
+}
+
+
+/* animation keyframes */
+
+@keyframes text-flash-green {
+  0% {
+      color: green;  
+  }
+  50% {
+    color: white;
+  }
+  75%{
+    color: green;
+  }
+    100%{
+        
+    }
+}
+
+@keyframes add-item {
+  0% {  
+    background-color: white;
+    color: green;  
+  }
+  50% {
+    background-color: green;
+    color: white;
+  }
+  75%{
+    background-color: white;
+    color: green;
+  }   
+}
+
+@keyframes negative-update-item {
+  0% {  
+    background-color: white;
+    color: red;  
+  }
+  50% {
+    background-color: red;
+    color: white;
+  }
+  75%{
+    background-color: white;
+    color: red;
+  }   
+}

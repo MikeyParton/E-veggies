@@ -1,0 +1,6 @@
+<div class="line-item" id="line-item-<%= item.id %>"> 
+	<span><%= link_to item.quantity, edit_order_item_path(item) %></span>
+	<span><%= item.product.title %></span>
+	<span class="to-end"><%= link_to icon("times"), item, method: :delete, remote: true %></span>
+	<span class="to-end"><%= print_price item.subtotal %></span>
+</div>

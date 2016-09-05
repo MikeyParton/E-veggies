@@ -1,0 +1,268 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "main";
+@import "cart";    
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#page-content{
+    margin-bottom:100px;
+}
+
+.errors {
+        padding-left: 0px;
+        color: red;
+        list-style: none;
+    }
+
+.jumbo-home {
+
+    background-image: url("vegetable-set-5.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align: center;
+    border: 0px;
+    margin-bottom: 0px;
+    
+    .title-text {
+        width:300px;
+        margin: 0 auto;
+        color: white;
+        border: solid white 5px;
+        border-radius: 10px;
+
+        h1{
+            font-size: 55px;
+        }
+    }  
+}
+
+.justice {
+    
+}
+
+.admin-tools {
+    height: 30px;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.product-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.solid-area {
+    position:relative;
+    border-radius: 5px;
+    background-color: white;
+    border: solid #f2f2f2 1px;
+    height:225px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.single-item{
+    float: left;
+    margin: 0 0 20px 0;
+    height:250px;
+    padding: 10px 20px 0 0;
+}
+
+.thumb {
+    height: calc(100% - 30px);
+    padding-bottom: 25px;
+    
+    img {
+        height:100%;
+        
+    }
+}
+
+.quantity-field {
+    height: 100%;
+    text-align: center; 
+    width: 50px;
+}
+
+.low-stock {
+    color: red;
+}
+
+.add-to-cart {
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    width: 100%;
+    margin: 5px 0 10px 0;
+    display: none;
+    
+    .button_to{
+        margin: 0 5px 0 5px;
+    }
+}
+
+.solid-area:hover .add-to-cart {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-outline-success {
+    color: white;
+    background-image: none;
+    background-color: transparent;
+    border-color: white;
+    
+    .icon-bar{
+        background-color: white;
+    }
+    
+    &:hover {
+        color: #5cb85c;
+        background-color: white;
+        border-color: white;  
+        
+        .icon-bar{
+            background-color: #5cb85c;
+        }
+        
+    }
+}   
+
+.navbar {
+    background-color: black;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    
+    #login {
+        margin: 8px 15px 0 15px;
+    }
+    
+    a, p {
+        color: white;
+        padding-left: 15px;
+    }
+    
+    li {
+        a:hover {
+            background-color: white;
+            color: #5cb85c;
+        }
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    margin: 0;
+    color: white;
+    text-align: center;
+    p {
+        padding: 10px 0 10px 0;
+        margin: 0;
+    }
+}
+
+.modal-content{
+    background-color: #5cb85c;
+    
+    .modal-header{
+        color: white;
+    }
+    
+    .modal-body{
+        background-color: white;
+    }
+}
+
+.order-summary {
+    margin: 10px 0 10px 0;
+}
+
+.order-detail {
+    
+    th, td {
+        padding: 5px 20px 5px 0;    
+    }
+    
+    .item-summary{
+        td, th{
+            text-align: center;
+        }
+
+        .total-row {
+            font-size: 20px;
+            font-weight: 400;
+            border-top: 1px solid #eeeeee;
+        }
+        
+        .item-row{
+            border-bottom: 1px solid #eeeeee;
+        }
+    }
+}
+
+.login-button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    height: 38px;
+    width: 200px;
+    
+    i {
+        padding: 0px;
+        font-size: 24px;
+    }
+    
+    span {
+        display: inline-block;
+        padding: 0 0 8px 8px;
+        vertical-align: middle;
+    }
+    
+}
+
+.facebook-login {
+    background-color: #3b5998;
+    color: white;
+    
+    &:hover{
+        background-color: white;
+        color: #3b5998;
+        border: solid #3b5998 1px;
+    }
+    
+}
+
+.twitter-login{
+    background-color: #00aced;
+    color: white;
+    
+    &:hover{
+        background-color: white;
+        color: #00aced;
+        border: solid #00aced 1px;
+    }
+}
+
+.mini-pic{
+    height:40px;
+}

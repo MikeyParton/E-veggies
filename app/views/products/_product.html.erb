@@ -1,0 +1,25 @@
+<li id="product-<%= product.id%>" class="single-item col-md-3 col-sm-4 col-xs-6">
+  <div class="solid-area">
+    <div class="admin-tools">
+      <div class="justice"><%= link_to icon('wrench'), edit_product_path(product), remote: true %></div>
+      <div class="justice"><%= print_stock(product.stock) %></div>
+      <div class="justice"><%= link_to icon('trash'), delete_product_path(product), remote: true %></div>
+    </div>
+    <div class="thumb">
+    <%= image_tag("products/#{product.image_url}") %>
+    </div>
+    <div class="add-to-cart">
+      <%= render partial: 'products/add_to_cart', locals: {product: product} %>
+    </div>
+  </div>
+  
+  <div class = "product-info">
+      <div class = "pull-left">
+        <%= product.title %>
+        <%= product.unit %>
+      </div>
+      <div class = "pull-right">
+        <%= print_price(product.price) %>
+      </div>
+  </div>
+</li>

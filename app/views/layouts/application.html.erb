@@ -5,29 +5,27 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-	  <div class="wrapper">
-	  	<div class="header">
-		  	<h1>E-Veggies</h1>
-		  	<p>Your Online Grocery Store</p>
-	  	</div>
 
-	  	<p style="color: green"><%=flash[:notice] %> </p>
+      <%= render "navbar" %>
 
-	  	<div class="sidebar">
-	  		(sidebar)
-	  	</div>
+      <div class="modal fade" id="product-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      </div>
 
-	  	<div class="main">
+	  	<div id="page-content">
 	  		<%= yield %>
 	  	</div>
 
-	  	<div class="footer">
-	  		E-Veggies - A Rails Project by Mike Parton
-	  	</div>
-	  </div>
+	  	<footer class="footer">
+        <div class="container">
+	  		 <p>E-Veggies - A Rails Project by Mike Parton <span><%= icon("github", class: 'fa-2x') %></span></p>
+	  	  </div>
+      </footer>
+
   </body>
 </html>

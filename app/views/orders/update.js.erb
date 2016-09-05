@@ -1,0 +1,8 @@
+$("ul.errors").html("")
+<% if @order.errors.any? %>
+  <% @order.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+	window.location.assign('<%= j orders_path %>');
+<% end %>

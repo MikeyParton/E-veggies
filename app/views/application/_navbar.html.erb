@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-outline-success" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">E-Veggies</a>
+    </div>
+
+   <!-- Collect the nav links, forms, and other content for toggling -->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+          <% if current_user %>
+		    <li><p class="navbar-text"><%= current_user.name %></p> </span></li>
+            <li><%= link_to "Shop", root_path %></li>
+         	  <li><%= link_to "Orders", orders_path %></li>
+	      	<%= link_to "Logout", logout_path, id: "login", 
+	      			class: "navbar-btn btn btn-outline-success" %>				
+		  <% else %>
+		  	<%= link_to "Login", login_path, id: "login", 
+	      			class: "navbar-btn btn btn-outline-success", remote: true %>
+		  <% end %>
+          
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

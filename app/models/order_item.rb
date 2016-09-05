@@ -11,4 +11,9 @@ class OrderItem < ApplicationRecord
 		self.quantity * self.product.price
 	end
 
+	def remove_stock
+		product.stock -= self.quantity
+		product.save
+	end
+
 end

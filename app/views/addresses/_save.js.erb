@@ -1,0 +1,12 @@
+$(".modal-content ul.errors").html("")
+<% if @address.errors.any? %>
+  <% @address.errors.full_messages.each do |message| %>
+    $(".modal-content ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $("#page-content").html("<%= j render 'orders/confirm' %>");
+  $("#product-modal").modal("hide")
+  <% if @address == nil %>
+  <% else %>
+  <% end %>
+<% end %>

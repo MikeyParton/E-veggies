@@ -1,42 +1,78 @@
-<h1>Your Order</h1>
+<div class="container">
+<div class="modal-content order-summary">
+  <div class="modal-header">
+    <h1>Order #<%= @order.id %> </h1>
+  </div>
 
-<table>
-	<tr>
-		<th>Customer</th>
-		<td><%= @order.user_id %></td>
-	</tr>
-	<tr>
-		<th>Status</th>
-		<td><%= @order.status %></td>
-	</tr>
-	<tr>
-		<th>Items:</th>
-		<td><%= @order.order_items.count %></td>
-	</tr>
-</table>
-<table>
-	<tr>
-		<th>Items</th>
-		<th>Title</th>
-		<th>Quantity</th>
-		<th>Unit Price</th>
-		<th>Subtotal</th>
-		<th>Stock</th>
-	</tr>
-	<% @order.order_items.each do |item| %>
-		<tr>
-			<td><%= item.id %></td>
-			<td><%= item.product.title %></td>
-			<td><%= link_to item.quantity, edit_order_item_path(item) %></td>
-			<td><%= print_price item.product.price %></td>
-			<td><%= print_price item.subtotal %></td>
-			<td><%= print_stock item.product.stock, item.quantity %></td>
-			<td><%= link_to 'Destroy', item, method: :delete, data: {confirm: "Are You sure"} %></td>
-		</tr>
-	<% end %>
-</table>
-<h2>Total <%= print_price @order.total %></h2>
+  <div class="modal-body order-detail">
+		<div class="container">
+		
+		<div class="col-md-6">
+			<table class="order-header">
+				<h4>Your Details</h4>
+				<tr>
+					<th>Customer: </th>
+					<td><%= @order.user.name %></td>
+				</tr>
+				<tr>
+					<th>Order Status: </th>
+					<td><%= @order.status %></td>
+				</tr>
+			</table>
+			<hr>
+			<h4>Shipping</h4>
+			<table>
+				<tr>
+					<th>Ship to: </th>
+					<td><%= @order.address %></td>
+				</tr>
+			</table>
+		</div>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', root_path %>
-<%= link_to 'Empty Cart', @order, method: :delete, data: {confirm: "Are You sure"} %>
+
+		<div class="col-md-6">		
+			<h4>Items</h4>
+			<table class="item-summary">
+				<tr>
+					<th></th>
+					<th></th>
+					<th>Quantity</th>
+					<th>Unit Price</th>
+					<th>Subtotal</th>
+				</tr>
+				<% row = 0 %>
+				<% @order.order_items.each do |item| %>	
+				<tr class="item-row">
+					<td><%= row = row + 1 %></td>
+					<td><%= image_tag "products/#{item.product.image_url}", class: "mini-pic" %><%= item.product.title %></td>
+					<td><%= item.quantity %></td>
+					<td><%= print_price item.product.price %></td>
+					<td><%= print_price item.subtotal %></td>
+				</tr>
+				<% end %>
+
+				<!-- I was going to put in an extra line item for shipping
+
+					<tr class="item-row">
+						<td><%=row = row + 1 %></td>
+						<td>Shipping</td>
+						<td colspan="2"></td>
+						<td>$20.00</td>
+					</tr>
+				-->
+
+				<tr class="total-row">		
+					<td colspan="3"></td>
+					<td>Total:</td>
+					<td><%= print_price @order.total %></td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<%= link_to 'Back', orders_path, class: "btn btn-outline-success" %>
+	</div>
+</div>
+</div>

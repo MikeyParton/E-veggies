@@ -1,0 +1,21 @@
+<div class="order">  
+  <div class="head">
+    <h2>My Order</h2>
+  </div>
+  <div class="contents">
+    <div class="item-list">
+      <% @order.order_items.each do |item| %>
+          <%= render :partial => "products/cart_item", :locals => {:item => item} %>
+      <% end %> 
+    </div>
+    <div class="total">
+      <%= render "total" %>
+    </div>
+  </div>  
+</div>
+<div class="foot">
+  <%= link_to 'Checkout', confirm_order_path(@order), class: "btn btn-outline-success", remote: true%>
+  <div class="trigger btn-outline-success">
+    <%= icon('shopping-basket') %>
+  </div>  
+</div>

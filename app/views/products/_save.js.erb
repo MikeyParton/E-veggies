@@ -1,0 +1,16 @@
+$("ul.errors").html("")
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".product-list").html("<%= j render 'index' %>");
+  $("#product-modal").modal("hide")
+  <% if @product == nil %>
+  	
+  <% else %>
+  $("#product-<%= @product.id %> .solid-area").addClass("update-item").bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e){
+	$("#product-<%= @product.id %> .solid-area").removeClass('update-item');
+  });
+  <% end %>
+<% end %>

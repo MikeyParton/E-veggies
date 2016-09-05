@@ -1,0 +1,28 @@
+<div class="modal-dialog" role="document">
+  <div id="#modal-content" class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">
+      Login
+    </h4>
+  </div>
+  <div class="modal-body centered">
+    
+  <ul class="errors"></ul>  
+
+  <%= link_to facebookLogin_path, class:"btn login-button facebook-login" do %>
+    <%= icon('facebook-square') %>
+    <span>Facebook</span>
+  <% end %>
+
+  <%= link_to facebookLogin_path, class:"btn login-button twitter-login" do %>
+    <%= icon('twitter-square') %>
+    <span>Twitter</span>
+  <% end %>
+
+  </div>
+  <div class="modal-footer">
+    <%= link_to "Close", "#", class:"btn btn-outline-success" %> 
+  </div>
+  </div>
+</div>

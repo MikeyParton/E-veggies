@@ -1,0 +1,19 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 70px;
+    background-color: #ccffcc;
+    font-family: 'Montserrat', sans-serif;
+}
+
+i {
+    padding: 5px;
+}
