@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   #before_action :check_stock, only: [:update]
 
   # GET /orders
@@ -42,6 +42,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     if @order.update(order_params.merge(status: 'submitted'))
+      @order.order_items.each do |item|
+        item.remove_stock          
+      end
       session[:order_id] = nil
     end
   end
@@ -57,32 +60,17 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    if session[:user_id] == nil
+      render 'sessions/new' 
+    else
+      @order = Order.find(params[:id])
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
-    end
-
-    def check_stock
-      check_results = @order.order_items.collect do |item| 
-        if (item.product.stock < item.quantity)
-          flash.now[:danger] = "Sorry, it looks like we're out of some of those things"
-          false
-        else
-          true
-        end
-      end
-
-       if check_results.include?(false)
-          render "show"
-          return false
-       else 
-          @order.order_items.each do |item|
-              item.remove_stock          
-          end
-        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

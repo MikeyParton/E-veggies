@@ -1,7 +1,14 @@
 $("ul.errors").html("")
 <% if @order.errors.any? %>
-  <% @order.errors.full_messages.each do |message| %>
-    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% @order.errors.messages.values.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message[0].html_safe %>"))
+    <% @order.order_items.each do |item| %>
+    	<% if item.errors.any? %>
+    		<% item.errors.full_messages.each do |message| %>
+    			$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+    		<% end %>	
+    	<% end %>
+    <% end %>
   <% end %>
 <% else %>
 	window.location.assign('<%= j orders_path %>');
