@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
   def update
     @products = Product.all
-    @product = Product.create(product_params)
+    @product = Product.find(params[:id])
     @product.update_attributes(product_params)
   end
 
