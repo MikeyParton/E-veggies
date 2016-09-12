@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a little e-commerce type app that I made to familiarize myself with AJAX requests.
+It uses Omniauth for Facebook and Twitter login
 
-Things you may want to cover:
+I'm not using any services to remotely store and upload images, So the image pictures are limited to those in the assets folder.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://peaceful-oasis-38076.herokuapp.com/
